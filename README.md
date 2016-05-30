@@ -14,3 +14,9 @@ Projektübersicht:
   Enthält den JAVA-Code für die Steuerung
 * docs/<br />
   Dokumente
+
+## Bilder
+<img src="docs/img/20160528_180453.jpg" height="250px" />
+<img src="docs/img/20160528_180503.jpg" width="250px" />
+<img src="docs/img/20160530_214252.jpg" width="250px" />
+<img src="docs/img/20160530_214318.jpg" width="250px" />
