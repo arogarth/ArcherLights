@@ -8,9 +8,9 @@ Für die Zentrale Kontroll-Einheit kann ein Laptop mit JAVA genutzt werden.
 Die kommunikation der Komponenten untereinander geschieht über WLAN. Ein WLAN-Router ist daher vorraussetzung für die Anlage.
 
 Projektübersicht:
-* LIGHTS/
+* LIGHTS/<br />
   Enthält den nodejs-code für die Ampelsteuerung sowie die Ansible-Rolle zum einrichten des RaspberryPI
-* CONTROLLER/
+* CONTROLLER/<br />
   Enthält den JAVA-Code für die Steuerung
-* docs/
+* docs/<br />
   Dokumente
