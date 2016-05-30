@@ -7,6 +7,10 @@ Die Ampel-Anlage selbst wird über einen RaspberryPI angesteuert. Der RaspberryP
 Für die Zentrale Kontroll-Einheit kann ein Laptop mit JAVA genutzt werden.
 Die kommunikation der Komponenten untereinander geschieht über WLAN. Ein WLAN-Router ist daher vorraussetzung für die Anlage.
 
+Vorzeil der Anlage:
+* Die Ampel benötigt lediglich einen Strom-Anschluss
+* Die Ampeln sind theoretisch beliebig erweiterbar
+
 Projektübersicht:
 * LIGHTS/<br />
   Enthält den nodejs-code für die Ampelsteuerung sowie die Ansible-Rolle zum einrichten des RaspberryPI
@@ -20,3 +24,27 @@ Projektübersicht:
 <img src="docs/img/20160528_180503.jpg" width="250px" />
 <img src="docs/img/20160530_214252.jpg" width="250px" />
 <img src="docs/img/20160530_214318.jpg" width="250px" />
+
+# Partliste
+
+ * Ampel (Rot/Gelb/Grün)<br />
+   ggf. bei ebay-kleinanzeigen (ca. 40€)
+ * Ampel (AB/CD)<br />
+   ggf. bei ebay-kleinanzeigen (ca. 30€) - Es ist darauf zu achten, dass die Gläser dieser Ampel weiß sind!
+ * Nebelhorn<br />
+   ggf. bei ebay-kleinanzeigen (ca. 25€)
+ * RaspberryPI
+   Bei Amazon oder anderen (ca. 40€) - [Beispiel](https://www.amazon.de/Raspberry-Pi-3-Model-B/dp/B01CEFWQFA)
+ * 8-Fach-RelaisBoard
+   Bei Amazon oder anderen (ca. 5€) - [Beispiel](https://www.amazon.de/Kanal-Relay-Relais-Module-Arduino/dp/B00AEIDWXK)
+ * USB WLAN-Stick<br />
+   Bei Amazon oder anderen (ca. 7€) - [Beispiel](https://www.amazon.de/EDIMAX-EW-7811UN-Wireless-Adapter-IEEE802-11b/dp/B003MTTJOY)
+ * USB-Netzteil für den PI<br />
+   Bei Amazon oder anderen (ca. 11€) - [Beispiel](https://www.amazon.de/gp/product/B00OCIXTTK)
+ * Kabel/Gehäuse/Gestell
+ * WLAN-Router<br />
+   Alter FritzBox! oder ähnliches mit WLAN-Modul
+ * Laptop
+ 
+Die Material-Kosten leigen insgesamt bei ca. 200€-250€.
+   
