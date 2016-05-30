@@ -32,7 +32,7 @@ Projektübersicht:
 [![](http://img.youtube.com/vi/vV-KeMpcDqQ/0.jpg)](https://www.youtube.com/embed/vV-KeMpcDqQ)
 
 
-# Partliste
+# Einzelteile-Liste
 
  * Ampel (Rot/Gelb/Grün)<br />
    ggf. bei ebay-kleinanzeigen (ca. 40€)
