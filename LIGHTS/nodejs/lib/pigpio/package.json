@@ -1,0 +1,4 @@
+{
+  "name": "pigpio",
+  "main": "gpio.js"
+}

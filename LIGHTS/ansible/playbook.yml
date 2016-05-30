@@ -1,0 +1,113 @@
+---
+
+# Ansible Playbook to Install client-part of archery lights to raspbery
+#
+# Depend on Raspian (Debian) Wheezy
+#
+
+- hosts: all
+  become: yes
+  vars:
+    # remove_packages:
+    # -
+    app_dir: /opt/archerlights
+    install_packages:
+      - wpasupplicant
+      - rsync
+      - vim
+      - mc
+      - nodejs
+      - nodejs-legacy
+      - npm
+
+  handlers:
+    # - name: reload network
+    #   shell: ifdown {{item}} && ifup {{item}}
+    #   with_items: "{{ansible_interfaces}}"
+    - name: reload wifi
+      shell: ifdown wlan0 && ifup wlan0
+    - name: restart archerlights
+      shell: "forever restart {{ app_dir }}/app/main.js"
+
+  tasks:
+
+    - name: Remove unwanted packages
+      apt: name="{{ remove_packages }}" state=absent
+    #  with_items: "{{ remove_packages }}"
+      when: remove_packages is defined
+
+    ## Install required packes to system
+    ## defined in vars obove
+    - name: Install required packages
+      apt: name="{{ item }}" state=present update_cache=yes
+      with_items: "{{ install_packages }}"
+      when: install_packages is defined
+      tags: [apt]
+
+    ## Install the WiFi Connection template
+    - name: Install WiFi-Configuration
+      template:
+        src: etc/wpa_supplicant/wpa_supplicant.conf
+        dest: /etc/wpa_supplicant/wpa_supplicant.conf
+        mode: 0600
+        owner: root
+        group: root
+      notify: reload wifi
+
+    - name: Install Network Configuration
+      template:
+        src: etc/network/interfaces
+        dest: "/etc/network/interfaces"
+      # notify: reload network
+
+    - name: Install Network Configuration
+      template:
+        src: etc/network/interfaces.d/eth0.cfg
+        dest: "/etc/network/interfaces.d/{{ item }}.cfg"
+      with_items: "{{ ansible_interfaces }}"
+      when: item != 'lo'
+      # notify: reload network
+
+    - name: Copy bootscript
+      file: path=/opt/archerlights/bin/ state=directory
+
+    - template:
+        src: opt/archerlights/bin/startup.sh
+        dest: "{{ app_dir }}/bin/startup.sh"
+        owner: root
+        group: root
+        mode: 0751
+      tags: [sync_app]
+
+    - lineinfile:
+        dest: /etc/rc.local
+        line: "{{ app_dir }}/bin/startup.sh"
+        insertbefore: "exit 0"
+
+    - lineinfile:
+        dest: /etc/rc.local
+        line: "forever start {{ app_dir }}/app/main.js"
+        insertbefore: "exit 0"
+
+    - file:
+        path: "{{ app_dir }}/app/"
+        state: directory
+        mode: 0777
+      tags: [sync_app]
+
+    - synchronize:
+        src: "/home/arogarth/projects/archery.lights/LIGHTS/nodejs/"
+        dest: "{{ app_dir }}/app/"
+        rsync_opts: "--exclude=node_modules/*"
+      notify: restart archerlights
+      tags: [sync_app]
+
+    - name: reset state
+      shell: "{{ app_dir }}/bin/startup.sh"
+      tags: [sync_app]
+
+    - npm: path="{{ app_dir }}/app/" global=no
+      tags: [npm]
+
+    - npm: name=forever global=yes
+      tags: [npm]

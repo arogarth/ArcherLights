@@ -1,0 +1,12 @@
+---
+- hosts: controller
+  become: true
+  tasks:
+    - name: Install basic packages
+      apt: name={{ item }} state=latest update_cache=yes
+      with_items:
+        - rpi-update
+        - vim
+        - mc
+
+    - shell: REPO_URI=https://github.com/notro/rpi-firmware BRANCH=latest rpi-update

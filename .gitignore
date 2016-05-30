@@ -1,0 +1,19 @@
+# Netbeans Files
+**/build/
+**/dist/
+**/nbproject/
+**/test/
+**/build.xml
+**/manifest.mf
+
+# NodeJS Files
+**/node_modules/
+
+# Ansible / Vagrant
+**/.vagrant
+**/playbook.retry
+
+# Development
+bridge_vm/
+EAGLE/
+
