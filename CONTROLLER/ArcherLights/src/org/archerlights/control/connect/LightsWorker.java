@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.archerlights.control.Counter;
 import org.archerlights.control.TeamMode;
-import org.archerlights.lights.Light;
+import org.archerlights.control.Light;
 import sun.net.www.http.HttpClient;
 
 /**

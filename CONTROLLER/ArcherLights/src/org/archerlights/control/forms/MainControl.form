@@ -142,7 +142,7 @@
     <Container class="javax.swing.JPanel" name="lghtSignal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="fd" red="ff" type="rgb"/>
+          <Color blue="c" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[0, 0]"/>

@@ -102,7 +102,7 @@ public class MainControl extends JFullscreenFrame implements Counter.CounterList
         lblTime.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 116, 40));
 
-        lghtSignal.setBackground(new java.awt.Color(255, 253, 0));
+        lghtSignal.setBackground(new java.awt.Color(255, 0, 12));
         lghtSignal.setMinimumSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout lghtSignalLayout = new javax.swing.GroupLayout(lghtSignal);
@@ -218,13 +218,13 @@ public class MainControl extends JFullscreenFrame implements Counter.CounterList
     public void setTime(Integer time) {
         this.lblTime.setText(time.toString());
 
-        if (!Counter.getInstance().isWaiting()) {
-            if (time == 0) {
-                this.lghtSignal.setBackground(Color.red);
-            } else if (time <= Counter.getInstance().getCountDownTime()) {
-                this.lghtSignal.setBackground(Color.yellow);
-            }
-        }
+//        if (!Counter.getInstance().isWaiting()) {
+//            if (time == 0) {
+//                this.lghtSignal.setBackground(Color.red);
+//            } else if (time <= Counter.getInstance().getCountDownTime()) {
+//                this.lghtSignal.setBackground(Color.yellow);
+//            }
+//        }
     }
 
     @Override
