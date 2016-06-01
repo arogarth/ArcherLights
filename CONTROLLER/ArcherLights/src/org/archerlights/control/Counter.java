@@ -38,6 +38,15 @@ public class Counter implements ActionListener {
         
         public void setTime(Integer time);
         public void setTeam(TeamMode mode, Integer currentRound, Integer maxRound);
+        
+//        public void setSignalRed();
+//        public void setSignalYellow();
+//        public void setSignalGreen();
+//        public void setModeAB();
+//        public void setModeCD();
+//        
+//        public void setRound(Integer currentRound, Integer maxRound);
+        
     }
     
     private static Counter instance;

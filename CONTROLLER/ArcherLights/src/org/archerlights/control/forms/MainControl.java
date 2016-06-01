@@ -191,7 +191,7 @@ public class MainControl extends JFullscreenFrame implements Counter.CounterList
 
     @Override
     public void startWaiting() {
-        this.lghtSignal.setBackground(Color.yellow);
+        this.lghtSignal.setBackground(Color.RED);
         this.blinkLight(2);
     }
 
@@ -216,15 +216,13 @@ public class MainControl extends JFullscreenFrame implements Counter.CounterList
 
     @Override
     public void setTime(Integer time) {
-        this.lblTime.setText(time.toString());
+        this.lblTime.setText(this.getTimeString(time));
 
-//        if (!Counter.getInstance().isWaiting()) {
-//            if (time == 0) {
-//                this.lghtSignal.setBackground(Color.red);
-//            } else if (time <= Counter.getInstance().getCountDownTime()) {
-//                this.lghtSignal.setBackground(Color.yellow);
-//            }
-//        }
+        if (Counter.getInstance().isShooting()
+         && !Counter.getInstance().isWaiting()
+         && time <= Counter.getInstance().getCountDownTime()) {
+            this.lghtSignal.setBackground(Color.yellow);
+        }
     }
 
     @Override
@@ -237,6 +235,14 @@ public class MainControl extends JFullscreenFrame implements Counter.CounterList
         this.lblRound.setText(String.format(format,  current, max));
     }
 
+    private String getTimeString(int totalSeconds) {
+        int hours = Math.floorDiv( totalSeconds, 60 );
+        int seconds = Math.floorMod( totalSeconds, 60 );
+        
+        return String.format("%02d:%02d", hours, seconds);
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnd;
     private javax.swing.JButton btnGroup;

@@ -98,7 +98,7 @@ public class LightsWorker implements Counter.CounterListener {
     public void startWaiting() {
         String params = "";
         
-        params = this.getDefaultAcousticSettings(2) + "&" + getLights(Light.YELLOW);
+        params = this.getDefaultAcousticSettings(2) + "&" + getLights(Light.RED);
         
         this.notifyClients(params);
     }
@@ -123,7 +123,7 @@ public class LightsWorker implements Counter.CounterListener {
 
     @Override
     public void emergencyStop() {
-       String params = "";
+        String params = "";
         
         params = this.getDefaultAcousticSettings(10) + "&" + getLights(Light.RED);
         
@@ -132,7 +132,18 @@ public class LightsWorker implements Counter.CounterListener {
 
     @Override
     public void setTime(Integer time) {
-        // Do Nothing
+        
+        if (Counter.getInstance().isShooting()
+         && !Counter.getInstance().isWaiting()
+         && time <= Counter.getInstance().getCountDownTime()) {
+            
+            String params = "";
+
+            params = getLights(Light.YELLOW);
+
+            this.notifyClients(params);
+            
+        }
     }
 
     @Override
