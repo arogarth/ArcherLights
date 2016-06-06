@@ -42,6 +42,7 @@ Projektübersicht:
    ggf. bei ebay-kleinanzeigen (ca. 25€)
  * RaspberryPI
    Bei Amazon oder anderen (ca. 40€) - [Beispiel](https://www.amazon.de/Raspberry-Pi-3-Model-B/dp/B01CEFWQFA)
+   PI Zero (ca. 10€ inkl. Versand) - [Beispiel](https://thepihut.com/products/raspberry-pi-zero?variant=14062715972)
  * 8-Fach-RelaisBoard
    Bei Amazon oder anderen (ca. 5€) - [Beispiel](https://www.amazon.de/Kanal-Relay-Relais-Module-Arduino/dp/B00AEIDWXK)
  * USB WLAN-Stick<br />
@@ -50,8 +51,8 @@ Projektübersicht:
    Bei Amazon oder anderen (ca. 11€) - [Beispiel](https://www.amazon.de/gp/product/B00OCIXTTK)
  * Kabel/Gehäuse/Gestell
  * WLAN-Router<br />
-   Alter FritzBox! oder ähnliches mit WLAN-Modul
+   Alte FritzBox! oder ähnliches mit WLAN-Modul
  * Laptop
  
-Die Material-Kosten leigen insgesamt bei ca. 200€-250€.
+Die Material-Kosten liegen insgesamt bei ca. 200€-250€.
    
