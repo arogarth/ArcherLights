@@ -34,8 +34,8 @@
   tasks:
 
     - name: Remove unwanted packages
-      apt: name="{{ remove_packages }}" state=absent
-    #  with_items: "{{ remove_packages }}"
+      apt: name="{{ item }}" state=absent
+      with_items: "{{ remove_packages }}"
       when: remove_packages is defined
 
     ## Install required packes to system
@@ -49,7 +49,7 @@
     ## Install the WiFi Connection template
     - name: Install WiFi-Configuration
       template:
-        src: etc/wpa_supplicant/wpa_supplicant.conf
+        src: templates/etc/wpa_supplicant/wpa_supplicant.conf
         dest: /etc/wpa_supplicant/wpa_supplicant.conf
         mode: 0600
         owner: root
@@ -58,13 +58,13 @@
 
     - name: Install Network Configuration
       template:
-        src: etc/network/interfaces
+        src: templates/etc/network/interfaces
         dest: "/etc/network/interfaces"
       # notify: reload network
 
     - name: Install Network Configuration
       template:
-        src: etc/network/interfaces.d/eth0.cfg
+        src: templates/etc/network/interfaces.d/eth0.cfg
         dest: "/etc/network/interfaces.d/{{ item }}.cfg"
       with_items: "{{ ansible_interfaces }}"
       when: item != 'lo'
@@ -74,7 +74,7 @@
       file: path=/opt/archerlights/bin/ state=directory
 
     - template:
-        src: opt/archerlights/bin/startup.sh
+        src: templates/opt/archerlights/bin/startup.sh
         dest: "{{ app_dir }}/bin/startup.sh"
         owner: root
         group: root
@@ -98,7 +98,7 @@
       tags: [sync_app]
 
     - synchronize:
-        src: "/home/arogarth/projects/archery.lights/LIGHTS/nodejs/"
+        src: "../nodejs/"
         dest: "{{ app_dir }}/app/"
         rsync_opts: "--exclude=node_modules/*"
       notify: restart archerlights

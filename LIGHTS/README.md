@@ -1,6 +1,18 @@
 
 # Installation
 
+## Den RaspberryPI vorbereiten
+
+Dieses Setup ist für die RaspberryPI Distribution "Raspbian" entwickelt worden.
+Raspbian kann auf der Seite von RaspberryPI heruntergeladen werden: https://downloads.raspberrypi.org/raspbian_lite_latest
+
+Das heruntergeladene ZIP muss Anschließend entpackt und auf eine MicroSD-Karte
+kopiert werden.
+
+Details, wie man Raspbian auf die SD-Karte bekommt finden man unter https://www.raspberrypi.org/documentation/installation/installing-images/
+
+## Installation der ArcherLights-Software
+
 Die einfachste Art die Client-Software auf den RaspberryPI zu bringen,
 ist das setup.sh-Skript. Dies kann direkt auf dem PI ausgeführt werden. Alle
 erforderlichen Komponenten werden heruntergeladen und auf dem PI installiert.
