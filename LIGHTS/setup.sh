@@ -4,6 +4,9 @@ APT_PACKAGES=(ansible git)
 GIT_REPO="https://github.com/arogarth/ArcherLights.git"
 PROJECT_PATH="/tmp/ArcheryLights"
 
+echo "Update APT-Cache..."
+apt-get update
+
 echo "Install required packages..."
 apt-get install -y ${APT_PACKAGES[@]}
 

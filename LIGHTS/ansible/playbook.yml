@@ -2,11 +2,13 @@
 
 # Ansible Playbook to Install client-part of archery lights to raspbery
 #
+# Note that Raspbian has Ansible Version 1.7.x
+#
 # Depend on Raspian (Debian) Wheezy
 #
 
 - hosts: all
-  become: yes
+  sudo: yes
   vars:
     # remove_packages:
     # -
