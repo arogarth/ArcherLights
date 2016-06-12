@@ -10,9 +10,25 @@
 - hosts: all
   sudo: yes
   vars:
-    # remove_packages:
-    # -
     app_dir: /opt/archerlights
+    remove_packages:
+      - alsa-utils
+      - bluez
+      - bluez-firmware
+      - make
+      - man-db
+      - manpages
+      - manpages-dev
+      - multiarch-support
+      - net-tools
+      - netbase
+      - netcat-openbsd
+      - netcat-traditional
+      - nfs-common
+      - ntp
+      - parted
+      - pi-bluetooth
+      - samba-common
     install_packages:
       - wpasupplicant
       - rsync
