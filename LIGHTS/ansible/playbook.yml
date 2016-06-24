@@ -10,8 +10,7 @@
 - hosts: all
   sudo: yes
   vars:
-    # remove_packages:
-    # -
+    remove_packages: []
     app_dir: /opt/archerlights
     install_packages:
       - wpasupplicant
@@ -73,6 +72,13 @@
     - name: Copy bootscript
       file: path=/opt/archerlights/bin/ state=directory
 
+    - name: Disable USB PowerSafe for WiFi
+      template:
+        src: templates/etc/modprobe.d/8192cu.conf
+        dest: /etc/modprobe.d/8192cu.conf
+        owner: root
+        group: root
+      
     - template:
         src: templates/opt/archerlights/bin/startup.sh
         dest: "{{ app_dir }}/bin/startup.sh"
