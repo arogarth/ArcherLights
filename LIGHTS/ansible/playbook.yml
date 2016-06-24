@@ -11,24 +11,7 @@
   sudo: yes
   vars:
     app_dir: /opt/archerlights
-    remove_packages:
-      - alsa-utils
-      - bluez
-      - bluez-firmware
-      - make
-      - man-db
-      - manpages
-      - manpages-dev
-      - multiarch-support
-      - net-tools
-      - netbase
-      - netcat-openbsd
-      - netcat-traditional
-      - nfs-common
-      - ntp
-      - parted
-      - pi-bluetooth
-      - samba-common
+    remove_packages: []
     install_packages:
       - wpasupplicant
       - rsync
@@ -37,15 +20,6 @@
       - nodejs
       - nodejs-legacy
       - npm
-
-  handlers:
-    # - name: reload network
-    #   shell: ifdown {{item}} && ifup {{item}}
-    #   with_items: "{{ansible_interfaces}}"
-    - name: reload wifi
-      shell: ifdown wlan0 && ifup wlan0
-    - name: restart archerlights
-      shell: "forever restart {{ app_dir }}/app/main.js"
 
   tasks:
 
@@ -70,21 +44,18 @@
         mode: 0600
         owner: root
         group: root
-      notify: reload wifi
 
     - name: Install Network Configuration
       template:
         src: templates/etc/network/interfaces
         dest: "/etc/network/interfaces"
-      # notify: reload network
 
     - name: Install Network Configuration
       template:
         src: templates/etc/network/interfaces.d/eth0.cfg
         dest: "/etc/network/interfaces.d/{{ item }}.cfg"
-      with_items: "{{ ansible_interfaces }}"
+      with_items: [ "eth0", "wlan0" ]
       when: item != 'lo'
-      # notify: reload network
 
     - name: Copy bootscript
       file: path=/opt/archerlights/bin/ state=directory
@@ -124,7 +95,6 @@
         src: "../nodejs/"
         dest: "{{ app_dir }}/app/"
         rsync_opts: "--exclude=node_modules/*"
-      notify: restart archerlights
       tags: [sync_app]
 
     - name: reset state
